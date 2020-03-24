@@ -1,8 +1,73 @@
 {
+    "name":"Commandbox-EnvFile",
+    "version":"0.0.1",
+    "author":"",
+    "location":"https://github.com/djcard/commandbox-envfile",
+    "directory":"",
+    "createPackageDirectory":true,
+    "packageDirectory":"",
+    "homepage":"",
+    "documentation":"",
+    "repository":{
+        "type":"github",
+        "URL":"https://github.com/djcard/commandbox-envfile.git"
+    },
+    "bugs":"",
+    "slug":"commandbox-envfile",
+    "shortDescription":"A tool to create and list datasources for a CommandBox Installation",
+    "description":"A simple tool to create and modify .env files from CommandBox",
+    "instructions":"",
+    "changelog":"",
+    "type":"commandbox-modules",
+    "keywords":[],
+    "private":false,
+    "engines":[
+        {
+            "type":"",
+            "version":""
+        }
+    ],
+    "defaultEngine":"",
+    "defaultPort":0,
+    "projectURL":"",
+    "license":[
+        {
+            "type":"",
+            "URL":""
+        }
+    ],
+    "contributors":[],
     "dependencies":{
+
+    },
+    "devDependencies":{
         "testbox":"^3.2.0+356"
     },
     "installPaths":{
         "testbox":"testbox/"
+    },
+    "scripts":{},
+    "testbox":{
+        "runner":[
+            {
+                "default":""
+            }
+        ],
+        "labels":[],
+        "reporter":"",
+        "reporterResults":"",
+        "bundles":[
+            ""
+        ],
+        "directory":{
+            "mapping":"",
+            "recurse":true
+        },
+        "watchers":[],
+        "notify":{
+            "emails":[],
+            "growl":"",
+            "URL":""
+        }
     }
 }
