@@ -15,17 +15,13 @@ component {
         required string name,
         string value = '',
         string envFileName = '.env',
-        string folder
+        string folder = getcwd()
         
     ) {
-        folder = isnull(folder) ? getcwd() : folder;
+        //folder = isnull(folder) ? getcwd() : folder;
         var envFile = expandPath('#folder##envFileName#');
         if(!doesFileExist(envFile)){
-            var createFile= ask(message="The file #envFileName# does not appear to exist. Do you want to create it? Y/N :");
-            if(createFile eq 'Y'){
-                command("touch #envFile#").run();
-            }
-
+            common.createEnv(envFileName,envFile);
         }
         var allprops = propertyFile.load(envFile);
         allprops.set(name, value);
