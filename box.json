@@ -2,7 +2,7 @@
     "name":"Commandbox-EnvFile",
     "version":"0.0.1",
     "author":"",
-    "location":"https://github.com/djcard/commandbox-envfile",
+    "location":"https://github.com/djcard/commandbox-envfile.git",
     "directory":"",
     "createPackageDirectory":true,
     "packageDirectory":"",
