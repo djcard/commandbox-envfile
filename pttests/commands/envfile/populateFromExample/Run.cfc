@@ -21,7 +21,7 @@ component extends="testbox.system.BaseSpec" {
     void function run() {
         describe('Populate Example', function() {
             beforeEach(function() {
-                testobj = createMock('commands.envfile.populateExample');
+                testobj = createMock('commands.envfile.populateFromExample');
                 testobj.$(method = 'getcwd', returns = '');
                 testobj.$(method = 'ask', returns = 'ff');
 
