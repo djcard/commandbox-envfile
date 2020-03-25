@@ -20,7 +20,15 @@ component accessors="true" {
             return;
         }
         var allprops = propertyFile.load(envFile);
-        return allprops.get(name);
+        var returnValue='';
+        try{
+            returnValue= allprops.get(name);
+        }
+        catch(any err){
+            //common.printme(err.keylist());
+            common.printme('Error: #err.message#');
+        }
+        return returnValue;
     }
 
 }
