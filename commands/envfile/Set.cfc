@@ -1,7 +1,7 @@
 /*
  * Adds a key value pair to the .env file in the current folder (or submitted file)
  */
-component {
+component accessors="true"{
     property name="common" inject="Common@cbengvar";
     property name="propertyFile" inject="provider:PropertyFile@propertyFile";
 
@@ -15,17 +15,17 @@ component {
         required string name,
         string value = '',
         string envFileName = '.env',
-        string folder = getcwd()
+        string folder = getcwd(),
+        boolean force=false
         
     ) {
-        //folder = isnull(folder) ? getcwd() : folder;
         var envFile = expandPath('#folder##envFileName#');
-        if(!doesFileExist(envFile)){
-            common.createEnv(envFileName,envFile);
+        var continuer = common.doesFileExist(envFile) ? true : common.createEnv(envFileName,envFile,force);
+        if(continuer) {
+            var allprops = propertyFile.load(envFile);
+            allprops.set(name, value);
+            allprops.store();
         }
-        var allprops = propertyFile.load(envFile);
-        allprops.set(name, value);
-        allprops.store();
     }
 
 

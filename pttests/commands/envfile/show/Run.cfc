@@ -19,25 +19,35 @@ component extends="testbox.system.BaseSpec"{
 	
 		describe( "My test Suite", function(){
 			beforeEach(function(){
-				testobj=createObject("commands.envfile.Show");
-				mockPropertyFile=createEmptyMock();
-				mockPropertyFile.$(method="load",returns=true);
-				mockPropertyFile.$(method="getsyncedNames",returns=[]);
-				mockCommon=createmock(models.common);
+				testobj=createMock("commands.envfile.Show");
+				mockPropertyFile=createEmptyMock("models.common");
+				mockPropertyFile.$(method="load",returns=mockPropertyFile);
+				mockPropertyFile.$(method="getsyncedNames",returns=["fred","tim"]);
+                mockPropertyFile.$(method="get",returns="YO");
+				mockCommon=createmock("models.common");
+                mockCommon.$(method="printme",returns=true);
 
+				testobj.$(method="getcwd",returns='');
 			});
 			it( "If the file doesn't exist, print a message and exit", function(){
-				mockCommon.$(method="doesFileExist",returns=true);
-				mockCommon.$(method="printme",returns=true);
+				mockCommon.$(method="doesFileExist",returns=false);
 				testobj.setCommon(mockCommon);
 				testobj.setpropertyFile(mockPropertyFile);
+				testme = testobj.run();
+				expect( mockCommon.$count("doesFileExist") ).toBe(1);
+                expect( mockCommon.$count("printme") ).toBe(1);
+			});
 
-                expect( testObj.$count("printme") ).toBe(7);
-			});
-			
-			it( "should do something else", function(){
-                expect( false ).toBeTrue();
-			});
+            it( "If the file exists, load it into propertyFile and output the contents print a message and exit", function(){
+                mockCommon.$(method="doesFileExist",returns=true);
+                testobj.setCommon(mockCommon);
+                testobj.setpropertyFile(mockPropertyFile);
+                testme = testobj.run();
+                    expect( mockCommon.$count("doesFileExist") ).toBe(1);
+                    expect( mockCommon.$count("printme") ).toBe(2);
+                    expect( mockPropertyFile.$count("load") ).toBe(1);
+                    expect( mockPropertyFile.$count("getsyncedNames") ).toBe(1);
+            });
 			
 		});
 		

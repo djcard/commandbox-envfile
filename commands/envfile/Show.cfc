@@ -1,7 +1,7 @@
 /*
  * Displays the contents of the .env (or submitted file)
  */
-component {
+component accessors="true"{
     property name="common" inject="Common@cbengvar";
     property name="propertyFile" inject="provider:PropertyFile@propertyFile";
 
