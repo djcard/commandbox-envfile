@@ -28,7 +28,7 @@ component accessors="true" {
             source
                 .getSyncedNames()
                 .map(function(name, value) {
-                    var newVal = ask(message = 'New Value for: #name#');
+                    var newVal = ask(message = 'New Value for - #name#: ');
                     target.set(name, newVal);
                 });
             target.store();
