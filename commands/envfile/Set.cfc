@@ -1,7 +1,8 @@
 /*
  * Adds a key value pair to the .env file in the current folder (or submitted file)
  */
-component accessors="true"{
+component accessors="true" {
+
     property name="common" inject="Common@cbeditenv";
     property name="propertyFile" inject="provider:PropertyFile@propertyFile";
 
@@ -10,24 +11,23 @@ component accessors="true"{
      * @name The name of the variable desired
      * @value The value of the variable desired
      * @envFileName The .env file in the current folder to read. Defaults to .env
+     * @folder The folder in which the .env should reside. Defaults to getcwd()
+     * @force whether to bypass confirmation about creating a .env file if necessary
      */
     void function run(
         required string name,
         string value = '',
         string envFileName = '.env',
         string folder = getcwd(),
-        boolean force=false
-        
+        boolean force = false
     ) {
         var envFile = expandPath('#folder##envFileName#');
-        var continuer = common.doesFileExist(envFile) ? true : common.createEnv(envFileName,envFile,force);
-        if(continuer) {
+        var continuer = common.doesFileExist(envFile) ? true : common.createEnv(envFileName, envFile, force);
+        if (continuer) {
             var allprops = propertyFile.load(envFile);
             allprops.set(name, value);
             allprops.store();
         }
     }
-
-
 
 }
