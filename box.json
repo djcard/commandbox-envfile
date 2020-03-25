@@ -14,7 +14,7 @@
     },
     "bugs":"",
     "slug":"commandbox-envfile",
-    "shortDescription":"A tool to create and list datasources for a CommandBox Installation",
+    "shortDescription":"A simple tool to create and modify .env files from CommandBox",
     "description":"A simple tool to create and modify .env files from CommandBox",
     "instructions":"",
     "changelog":"",
