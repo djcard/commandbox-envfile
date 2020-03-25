@@ -20,13 +20,18 @@ component extends="testbox.system.BaseSpec" {
     /*********************************** BDD SUITES ***********************************/
 
     void function run() {
-        describe('Config should', function() {
+        describe('Does File Exist', function() {
             beforeEach(function() {
-                testobj = createObject('moduleconfig');
+                testobj = createObject('models.Common');
             });
-            it('not do much. No config', function() {
-                var testme = testObj.configure();
-                expect(true).toBeTrue();
+            it('Should return true if the file exists', function() {
+                testme = testobj.doesFileExist(expandPath(cgi.script_name));
+                expect(testme).toBeTrue();
+            });
+
+            it('should do something else', function() {
+                testme = testobj.doesFileExist(expandPath('THISFILESHOULDNOTEXIST.FGH'));
+                expect(testme).toBeFalse();
             });
         });
     }

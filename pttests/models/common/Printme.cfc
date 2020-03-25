@@ -20,12 +20,9 @@ component extends="testbox.system.BaseSpec" {
     /*********************************** BDD SUITES ***********************************/
 
     void function run() {
-        describe('Config should', function() {
-            beforeEach(function() {
-                testobj = createObject('moduleconfig');
-            });
-            it('not do much. No config', function() {
-                var testme = testObj.configure();
+        describe('Printme should', function() {
+            it('work based on testing in place', function() {
+                // testme=createObject("models.common").printme("hi","redLine");
                 expect(true).toBeTrue();
             });
         });
