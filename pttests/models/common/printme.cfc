@@ -20,6 +20,7 @@ component extends="testbox.system.BaseSpec"{
 		describe( "Printme should", function(){
 			
 			it( "work based on testing in place", function(){
+				//testme=createObject("models.common").printme("hi","redLine");
                 expect( true ).toBeTrue();
 			});
 		});

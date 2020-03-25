@@ -2,7 +2,7 @@
  * Adds a key value pair to the .env file in the current folder (or submitted file)
  */
 component accessors="true"{
-    property name="common" inject="Common@cbengvar";
+    property name="common" inject="Common@cbeditenv";
     property name="propertyFile" inject="provider:PropertyFile@propertyFile";
 
     /*
