@@ -28,7 +28,12 @@ component accessors="true" {
             source
                 .getSyncedNames()
                 .map(function(name, value) {
-                    var newVal = ask(message = 'New Value for - #name#: ');
+			var existingValue = '';
+try{
+	var existingValue = target.get(name)
+}
+catch(any err){};
+                    var newVal = ask(message = 'New Value for - #name#: ',defaultResponse='#existingValue#');
                     target.set(name, newVal);
                 });
             target.store();
