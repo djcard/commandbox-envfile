@@ -1,7 +1,7 @@
 /*
  * The common functions for envfile
  */
-component{
+component accessors="true"{
 	property name="base" inject="BaseCommand";
     property name="print" inject="PrintBuffer";
 
