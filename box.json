@@ -20,6 +20,7 @@
     "type":"commandbox-modules",
     "keywords":[],
     "private":false,
+    "fakeKey": "test",
     "engines":[
         {
             "type":"",
