@@ -15,3 +15,6 @@ envfile set - Accepts and name and a value and adds it to the local .env file. A
 envfile get - Accepts a name and displays the value of it if it exists.
 
 envfile PopulateFromExample - Accepts the name of a file (defaults to .env) and an example (defaults to .env.example) and then loops through the example and asks the user for a value for each item in the example which is then written to the target file. 
+
+# Notes
+The values in the .env file are case sensitive so technically there can be a db_name key and a DB_NAME key. However, using this tool to edit keys with the same name but different capitalization can lead to unintentional overwriting of differently capitalized keys of that name.
