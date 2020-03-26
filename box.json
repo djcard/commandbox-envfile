@@ -32,8 +32,8 @@
     "projectURL":"",
     "license":[
         {
-            "type":"",
-            "URL":""
+            "type":"MIT",
+            "URL":"https://github.com/djcard/commandbox-cbdatasource/blob/master/LICENSE"
         }
     ],
     "contributors":[],
