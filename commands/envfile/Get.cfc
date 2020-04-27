@@ -6,11 +6,12 @@ component accessors="true" {
     property name="common" inject="Common@cbeditenv";
     property name="propertyFile" inject="provider:PropertyFile@propertyFile";
 
-    /*
+    /**
      * The entry point of the command
-     * @name The name of the variable desired
-     * @envFileName The .env file in the current folder to read. Defaults to .env
-     * @folder The folder in which the .env file to use is located. Defaults to getcwd()
+     * @name.hint The name of the variable desired
+     * @name.optionsUDF envNameComplete
+     * @envFileName.hint The .env file in the current folder to read. Defaults to .env
+     * @folder.hint The folder in which the .env file to use is located. Defaults to getcwd()
      */
     string function run(required string name, string envFileName = '.env', string folder = getcwd()) {
         // folder = isnull(folder) ? getcwd() : folder;
@@ -30,5 +31,16 @@ component accessors="true" {
         }
         return returnValue;
     }
+    
+    function envNameComplete( string paramsSoFar, struct passedNamedParameters ) {
+        param passedNamedParameters.envFileName = ".env";
+        param passedNamedParameters.folder = getcwd();
+        var envFile = expandPath( "#passedNamedParameters.folder##passedNamedParameters.envFileName#" );
+        if ( !common.doesFileExist( envFile ) ) {
+            common.printme( "The file #envFile# does not exist" );
+            return;
+        }
+        return propertyFile.load( envFile ).getSyncedNames();
+	}
 
 }
